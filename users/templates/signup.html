@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Signup Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body class="bg-slate-900 text-white">
+    {% load socialaccount %}
+    <form
+      action=""
+      method="post"
+      class="h-screen flex flex-col justify-center items-center border-2 border-black"
+    >
+      {% csrf_token %}
+      <h3 class="text-3xl font-extrabold">Signup Here</h3>
+
+      <label class="text-sm" for="username">Username</label>
+      <input
+        class="text-black"
+        type="text"
+        placeholder="Username"
+        name="username"
+        id="username"
+      />
+
+      <label class="text-sm" for="email">Email</label>
+      <input
+        class="text-black"
+        type="email"
+        placeholder="Email or Phone"
+        name="email"
+        id="email"
+      />
+
+      <label class="text-sm" for="password1">Password</label>
+      <input
+        class="text-black"
+        type="password"
+        placeholder="Password"
+        id="password1"
+        name="password1"
+      />
+
+      <label class="text-sm" for="password2">Confirm Password</label>
+      <input
+        class="text-black"
+        type="password"
+        placeholder="Confirm Password"
+        id="password2"
+        name="password2"
+      />
+      <button
+        type="submit"
+        class="bg-white rounded-full text-black p-2 text-sm m-2"
+      >
+        Signup
+      </button>
+      <button class="bg-white rounded-full text-black p-2 text-sm m-2">
+        <a href="{% provider_login_url 'google' %}?next=/">Login with google</a>
+      </button>
+      <a
+        href="{% url 'signin' %}"
+        class="bg-white rounded-full text-blue-700 p-2 text-sm m-2"
+        >I already have an account</a
+      >
+      <!-- {% if user.is_authenticated %}
+      <script>
+        alert("SIGNED UP!");
+      </script>
+      <p>You're signed in as {{user.email}}</p>
+      <a class="text-white font-extrabold" href="{% url 'home' %}">Continue</a>
+      {% endif %} -->
+    </form>
+  </body>
+</html>

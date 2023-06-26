@@ -1,0 +1,5 @@
+to run this file
+python manage.py runserver
+
+in templates folder
+npx tailwindcss -i input.css -o style.css --watch
