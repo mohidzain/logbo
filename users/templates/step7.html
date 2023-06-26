@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>step 7</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="QA page style.css" />
+  </head>
+
+  <body>
+    <!-- main header -->
+    <div class="header">
+      <div class="logo">
+        <img src="icons/logbook.png" alt="Logo" width="40PX" height="40px" />
+      </div>
+      <!-- main header (notification) -->
+      <div class="row">
+        <div class="d-grid gap-4">
+          <button class="btn btn-light" type="button">Course Outline</button>
+          <button class="btn btn-light" type="button">Take Notes</button>
+        </div>
+        <div>
+          <button
+            class="btn btn-light align-items left"
+            type="button"
+            id="notification"
+          >
+            <img src="icons/notification.png" alt="notification" height="30" />
+          </button>
+
+          <!-- main header (more button) -->
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn btn-light"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img src="icons/rename.png" alt="more" height="30" />
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="moreOptionsDropdown"
+          >
+            <a class="dropdown-item" href="#">Student portal</a>
+            <a class="dropdown-item" href="#">Preview logbook</a>
+            <a class="dropdown-item" href="#">Print logbook</a>
+            <a class="dropdown-item" href="#">View notes</a>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- main header ends -->
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 7 - TEST YOUR PROTOTYPE</h5>
+      </div>
+    </nav>
+    <!-- second header ends  -->
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-5"></div>
+    <form>
+      <div class="form-group">
+        <label class="form-label" for="inputlg">
+          7.1 Test your prototype on different parameters and note the extent to
+          which it satisfies the requirements you had set. Identify any problems
+          you see. Describe how you tested your prototype.
+        </label>
+        <textarea
+          class="form-control"
+          rows="8"
+          placeholder="Your Answer"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputlg"
+          >7.2 Identify and record all positive and negative observations you
+          have each time you test your prototype.
+        </label>
+        <label class="form-label" for="inputlg" style="color: green">
+          At this point, consider if you need to go back
+          <a href="step4.html">TO THE DRAWING BOARD (Step 4)</a> or
+          <a href="step6.html">OVER TO THE LAB(Step 6)</a> for some revisions to
+          the prototype. Keep creating new versions of ModelI1…, ProtoI as
+          needed so you can record all the iterations you did. Keep making
+          changes to your prototype and try new iterations until your invention
+          works as planned.
+        </label>
+
+        <textarea
+          class="form-control"
+          rows="8"
+          placeholder="Your Answer"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputlg" style="color: green"
+          ><b>Positive</b></label
+        >
+        <textarea
+          class="form-control"
+          rows="5"
+          placeholder="Write here"
+          required
+        ></textarea>
+      </div>
+      <div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg" style="color: green"
+            ><b>Negative</b></label
+          >
+          <textarea
+            class="form-control"
+            rows="5"
+            placeholder="Write here"
+            required
+          ></textarea>
+        </div>
+      </div>
+    </form>
+    <div></div>
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="step6.html">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="Step8.html">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons ends-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

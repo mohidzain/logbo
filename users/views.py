@@ -6,28 +6,28 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-def signin(request):
+def student_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
         user=authenticate(request, username=username,password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('student_profile')
         else:
             return HttpResponse('Username or Password is incorrect')
         # print(username, password)
-    return render(request, 'signin.html')
+    return render(request, 'student_signin.html')
 
 @login_required(login_url='/')
-def home(request):
-    return render(request, 'home.html')
+def student_profile(request):
+    return render(request, 'student_profile.html')
 
 def logout_view(request):
     logout(request)
     return redirect('/')
 
-def signup(request):
+def student_signup(request):
     if request.method=='POST':
         username=request.POST.get('username')
         email=request.POST.get('email')
@@ -38,7 +38,14 @@ def signup(request):
         else:
             my_user=User.objects.create_user(username, email, password1)
             my_user.save()
-            return redirect('signin')
+            return redirect('student_signin')
         # return HttpResponse('User created!')
         # print(username,email,password1,password2)
-    return render(request, 'signup.html')
+    return render(request, 'student_signup.html')
+
+def judge_signup(request):
+    pass
+def mentor_signup(request):
+    pass
+def admin_signup(request):
+    pass
