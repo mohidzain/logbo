@@ -14,10 +14,9 @@ def student_signin(request):
         user=authenticate(request, username=username,password=password)
         if user is not None:
             login(request, user)
-            return redirect('student_profile')
+            return redirect('student_portal')
         else:
             return HttpResponse('Username or Password is incorrect')
-        # print(username, password)
     return render(request, 'student_signin.html')
 
 def student_signup(request):
@@ -32,48 +31,42 @@ def student_signup(request):
             my_user=User.objects.create_user(username, email, password1)
             my_user.save()
             return redirect('student_signin')
-        # return HttpResponse('User created!')
-        # print(username,email,password1,password2)
     return render(request, 'student_signup.html')
 
 @login_required(login_url='/')
 def student_portal(request):
     return render(request, 'student_portal.html')
 
-
 # ===============FOR TEACHERS===============
+def teacher_signin(request):
+    return render(request, 'teacher_signin.html')
+
 def teacher_signup(request):
     return render(request, 'teacher_signup.html')
 
+# ===============FOR JUDGES===============
+def judge_signin(request):
+    return render(request, 'judge_signin.html')
 
-
-
-
-# SIGN UP
 def judge_signup(request):
     return render(request, 'judge_signup.html')
 
+# ===============FOR MENTORS===============
+def mentor_signin(request):
+    return render(request, 'mentor_signin.html')
+
 def mentor_signup(request):
     return render(request, 'mentor_signup.html')
+
+# ===============FOR ADMINS===============
+def admin_signin(request):
+    return render(request, 'admin_signin.html')
 
 def admin_signup(request):
     return render(request, 'admin_signup.html')
 
 
-
-# LOGIN
-def judge_signin(request):
-    return render(request, 'judge_signin.html')
-
-def mentor_signin(request):
-    return render(request, 'mentor_signin.html')
-
-def admin_signin(request):
-    return render(request, 'admin_signin.html')
-
-def teacher_signin(request):
-    return render(request, 'teacher_signin.html')
-
+# ===============LOGOUT===============
 def logout_view(request):
     logout(request)
     return redirect('/')
