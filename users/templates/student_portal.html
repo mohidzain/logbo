@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +18,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>Student portal</title>
   </head>
   <body>
@@ -29,124 +30,126 @@
     </nav>
     <!-------------- navigatio bar ends----------------->
     <!-------------- student portion options--------- -->
-    <section class="cardsection"></section>
-    <!------------------ option 1-------------------- -->
-    <div class="card">
-      <div>
-        <img
-          src="./icons/logbook.png"
-          class="img-fluid"
-          style="height: 100px"
-          alt="..."
-        />
+    <section class="cardsection">
+      <!------------------ option 1-------------------- -->
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/logbook.png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <!-- </div> -->
+        <br />
+        <!--  logbook box -->
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-outline-sucess dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Logbook
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Create logbook</a></li>
+            <li><a class="dropdown-item" href="#">Edit logbook</a></li>
+          </ul>
+        </div>
       </div>
-      <!-- </div> -->
-      <br />
-      <!--  logbook box -->
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-outline-sucess dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Logbook
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Create logbook</a></li>
-          <li><a class="dropdown-item" href="#">Edit logbook</a></li>
-        </ul>
+      <!------------------ option 2--------------------- -->
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/presentation.png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <br />
+        <!-- presentation box -->
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-outline-sucess dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Presentation
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Upload video</a></li>
+            <li><a class="dropdown-item" href="#">Upload presentation</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <!------------------ option 2--------------------- -->
-    <div class="card">
-      <div>
-        <img
-          src="./icons/presentation.png"
-          class="img-fluid"
-          style="height: 100px"
-          alt="..."
-        />
-      </div>
-      <br />
-      <!-- presentation box -->
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-outline-sucess dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Presentation
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Upload video</a></li>
-          <li><a class="dropdown-item" href="#">Upload presentation</a></li>
-        </ul>
-      </div>
-    </div>
 
-    <!------------------ option 3--------------------- -->
-    <div class="card">
-      <div>
-        <img
-          src="./icons/tool-box (1).png"
-          class="img-fluid"
-          style="height: 100px"
-          alt="..."
-        />
+      <!------------------ option 3--------------------- -->
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/tool-box (1).png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <!-- </div> -->
+        <br />
+        <!-- Tools box -->
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-outline-sucess dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Tools
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Fishbone</a></li>
+            <li><a class="dropdown-item" href="#">Brainstrome</a></li>
+          </ul>
+        </div>
       </div>
-      <!-- </div> -->
-      <br />
-      <!-- Tools box -->
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-outline-sucess dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Tools
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Fishbone</a></li>
-          <li><a class="dropdown-item" href="#">Brainstrome</a></li>
-        </ul>
+      <!------------------ option 4-------------------- -->
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/profile-user.png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <!-- </div> -->
+        <br />
+        <!--  Profile -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-sucess">Profile</button>
+        </div>
       </div>
-    </div>
-    <!------------------ option 4-------------------- -->
-    <div class="card">
-      <div>
-        <img
-          src="./icons/profile-user.png"
-          class="img-fluid"
-          style="height: 100px"
-          alt="..."
-        />
+      <!------------------ option 5--------------------- -->
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/group.png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <!-- </div> -->
+        <br />
+        <!-- Teams -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-sucess">Teams</button>
+        </div>
       </div>
-      <!-- </div> -->
-      <br />
-      <!--  Profile -->
-      <div class="btn-group">
-        <button type="button" class="btn btn-outline-sucess">Profile</button>
-      </div>
-    </div>
-    <!------------------ option 5--------------------- -->
-    <div class="card"></div>
-    <div>
-      <img
-        src="./icons/group.png"
-        class="img-fluid"
-        style="height: 100px"
-        alt="..."
-      />
-    </div>
-    <!-- </div> -->
-    <br />
-    <!-- Teams -->
-    <div class="btn-group"></div>
-    <button type="button" class="btn btn-outline-sucess">Teams</button>
-
+    </section>
     <!------------------ end--------------------- -->
 
     <script

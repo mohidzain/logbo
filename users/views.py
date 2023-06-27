@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
+# ===============FOR STUDENTS===============
 def student_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -18,14 +19,6 @@ def student_signin(request):
             return HttpResponse('Username or Password is incorrect')
         # print(username, password)
     return render(request, 'student_signin.html')
-
-@login_required(login_url='/')
-def student_profile(request):
-    return render(request, 'student_profile.html')
-
-def logout_view(request):
-    logout(request)
-    return redirect('/')
 
 def student_signup(request):
     if request.method=='POST':
@@ -43,9 +36,44 @@ def student_signup(request):
         # print(username,email,password1,password2)
     return render(request, 'student_signup.html')
 
+@login_required(login_url='/')
+def student_portal(request):
+    return render(request, 'student_portal.html')
+
+
+# ===============FOR TEACHERS===============
+def teacher_signup(request):
+    return render(request, 'teacher_signup.html')
+
+
+
+
+
+# SIGN UP
 def judge_signup(request):
-    pass
+    return render(request, 'judge_signup.html')
+
 def mentor_signup(request):
-    pass
+    return render(request, 'mentor_signup.html')
+
 def admin_signup(request):
-    pass
+    return render(request, 'admin_signup.html')
+
+
+
+# LOGIN
+def judge_signin(request):
+    return render(request, 'judge_signin.html')
+
+def mentor_signin(request):
+    return render(request, 'mentor_signin.html')
+
+def admin_signin(request):
+    return render(request, 'admin_signin.html')
+
+def teacher_signin(request):
+    return render(request, 'teacher_signin.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
