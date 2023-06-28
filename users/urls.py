@@ -14,8 +14,13 @@ urlpatterns=[
     path('judge_signup',views.judge_signup, name='judge_signup'),
     path('mentor_signup',views.mentor_signup, name='mentor_signup'),
     path('admin_signup',views.admin_signup, name='admin_signup'),
+
+    # path('landing',views.landing, name='landing'),
     
     path('student_portal',views.student_portal, name='student_portal'),
+    path('student_profile',views.student_profile, name='student_profile'),
+
+    path('teacher_profile',views.teacher_profile, name='teacher_profile'),
 
     path('logout',views.logout_view),
 ]

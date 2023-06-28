@@ -30,7 +30,7 @@
           >
             <div class="featured-image mb-3">
               <img
-                src="{% static 'login pic.jpg' %}"
+                src="{% static 'images/login pic.jpg' %}"
                 class="img-fluid"
                 style="width: 550px"
               />
@@ -47,5 +47,12 @@
                 <p>
     {% block content %}
     {% endblock %}
+    <script>
+      window.addEventListener('load', function() {
+          document.getElementsByTagName('input').value = '';
+          document.getElementsByTagName('input').value = '';
+          // Add more lines to clear additional input fields
+      });
+  </script>
   </body>
 </html>

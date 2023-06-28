@@ -25,7 +25,7 @@
               <div class="input-group mb-3">
                 <input
                   required
-                  type="text"
+                  type="email"
                   maxlength="30"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder="Email address"
@@ -36,17 +36,20 @@
                 <input
                   required
                   type="password"
-                  maxlength="8"
+                  minlength="8"
+                  pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"
                   class="form-control form-control-gr bg-light fs-6"
                   placeholder="Password"
                   name="password1"
                 />
               </div>
+              <small style="color: red;">must contain a capital and small letter with a number</small>
               <div class="input-group mb-1">
                 <input
                   required
                   type="password"
-                  maxlength="8"
+                  
+                  minlength="8"
                   class="form-control form-control-gr bg-light fs-6"
                   placeholder="Confirm password"
                   name="password2"
@@ -73,7 +76,7 @@
             <div class="input-group mb-3">
               <button class="btn btn-lg btn-light w-100 fs-6">
                 <img
-                  src="{% static 'google.png' %}"
+                  src="{% static 'images/google.png' %}"
                   style="width: 20px"
                   class="me-2"
                 /><a href="{% provider_login_url 'google' %}?next=/"

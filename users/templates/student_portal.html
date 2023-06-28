@@ -26,129 +26,141 @@
     <nav class="navbars">
       <div class="container-fluid-nav text-center">
         <h3>Student Portal</h3>
+        <button><a href="logout">Logout</a></button>
       </div>
     </nav>
     <!-------------- navigatio bar ends----------------->
     <!-------------- student portion options--------- -->
     <section class="cardsection">
       <!------------------ option 1-------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/logbook.png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
+      <a href="">
+        <div class="card">
+          <div>
+            <img
+              src="{% static 'images/logbook.png' %}"
+              class="img-fluid"
+              style="height: 100px"
+              alt="..."
+            />
+          </div>
+          <!-- </div> -->
+          <br />
+          <!--  logbook box -->
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-outline-sucess dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Logbook
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Create logbook</a></li>
+              <li><a class="dropdown-item" href="#">Edit logbook</a></li>
+            </ul>
+          </div>
         </div>
-        <!-- </div> -->
-        <br />
-        <!--  logbook box -->
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-outline-sucess dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Logbook
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Create logbook</a></li>
-            <li><a class="dropdown-item" href="#">Edit logbook</a></li>
-          </ul>
-        </div>
-      </div>
+      </a>
       <!------------------ option 2--------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/presentation.png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
+      <a href="">
+        <div class="card">
+          <div>
+            <img
+              src="{% static 'images/presentation.png' %}"
+              class="img-fluid"
+              style="height: 100px"
+              alt="..."
+            />
+          </div>
+          <br />
+          <!-- presentation box -->
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-outline-sucess dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Presentation
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Upload video</a></li>
+              <li><a class="dropdown-item" href="#">Upload presentation</a></li>
+            </ul>
+          </div>
         </div>
-        <br />
-        <!-- presentation box -->
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-outline-sucess dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Presentation
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Upload video</a></li>
-            <li><a class="dropdown-item" href="#">Upload presentation</a></li>
-          </ul>
-        </div>
-      </div>
-
+      </a>
       <!------------------ option 3--------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/tool-box (1).png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
+      <a href="">
+        <div class="card">
+          <div>
+            <img
+              src="{% static 'images/tool-box (1).png' %}"
+              class="img-fluid"
+              style="height: 100px"
+              alt="..."
+            />
+          </div>
+          <!-- </div> -->
+          <br />
+          <!-- Tools box -->
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-outline-sucess dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Tools
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Fishbone</a></li>
+              <li><a class="dropdown-item" href="#">Brainstrome</a></li>
+            </ul>
+          </div>
         </div>
-        <!-- </div> -->
-        <br />
-        <!-- Tools box -->
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-outline-sucess dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Tools
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Fishbone</a></li>
-            <li><a class="dropdown-item" href="#">Brainstrome</a></li>
-          </ul>
-        </div>
-      </div>
+      </a>
       <!------------------ option 4-------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/profile-user.png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
+      <a href="{% url 'student_profile' %}">
+        <div class="card">
+          <div>
+            <img
+              src="{% static 'images/profile-user.png' %}"
+              class="img-fluid"
+              style="height: 100px"
+              alt="..."
+            />
+          </div>
+          <!-- </div> -->
+          <br />
+          <!--  Profile -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-sucess">
+              Profile
+            </button>
+          </div>
         </div>
-        <!-- </div> -->
-        <br />
-        <!--  Profile -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-outline-sucess">Profile</button>
-        </div>
-      </div>
+      </a>
       <!------------------ option 5--------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/group.png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
+      <a href="">
+        <div class="card">
+          <div>
+            <img
+              src="{% static 'images/group.png' %}"
+              class="img-fluid"
+              style="height: 100px"
+              alt="..."
+            />
+          </div>
+          <!-- </div> -->
+          <br />
+          <!-- Teams -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-sucess">Teams</button>
+          </div>
         </div>
-        <!-- </div> -->
-        <br />
-        <!-- Teams -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-outline-sucess">Teams</button>
-        </div>
-      </div>
+      </a>
     </section>
     <!------------------ end--------------------- -->
 
