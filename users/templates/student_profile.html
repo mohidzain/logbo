@@ -30,131 +30,177 @@
       </div>
     </nav>
     <!-------------- navigation bar ends----------------->
-    <div class="container rounded bg-white mt-5 mb-5">
-      <div class="row">
-        <div class="col-md-3 border-right">
-          <div
-            class="d-flex flex-column align-items-center text-center p-3 py-5"
-          >
-            <img
-              class="rounded-circle mt-5"
-              width="150px"
-              src="{% static 'images/profile-user.png' %}"
-            />
-            <span class="font-weight-bold">{{user.username}}</span>
-            <span class="text-black-50">{{user.email}}</span>
+    <!-- {% include 'messages.html' %} -->
+    <form method="post">
+      {% csrf_token %}
+      <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+          <div class="col-md-3 border-right">
+            <div
+              class="d-flex flex-column align-items-center text-center p-3 py-5"
+            >
+              <img
+                class="rounded-circle mt-5"
+                width="150px"
+                src="{% static 'images/profile-user.png' %}"
+              />
+              <span class="font-weight-bold">{{user.username}}</span>
+              <span class="text-black-50">{{user.email}}</span>
+            </div>
           </div>
-        </div>
-        <div class="col-md-8">
-          <div class="p-3 py-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-center">Profile</h4>
-            </div>
-            <div class="row mt-2">
-              <div class="col-md-6">
-                <label class="labels">Name</label
-                ><input
-                  type="text"
-                  class="form-control"
-                  placeholder="First name"
-                  value=""
-                />
+
+          <div class="col-md-8">
+            <div class="p-3 py-5">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h4 class="text-center">Profile</h4>
               </div>
-              <div class="col-md-6">
-                <label class="labels">Last Name</label
-                ><input
-                  type="text"
-                  class="form-control"
-                  value=""
-                  placeholder="Last name"
-                />
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <label class="labels">First Name</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="First name"
+                    value=""
+                    name="f_name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="labels">Last Name</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Last name"
+                    name="l_name"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Gender</label
-                >
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                  <label class="form-check-label" for="inlineRadio1">Male</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                  <label class="form-check-label" for="inlineRadio2">Female</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option3">
-                  <label class="form-check-label" for="inlineRadio3">Others</label>
-                </div>
-                <!-- <input
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels">Gender</label>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineRadio1"
+                      >Male</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineRadio2"
+                      >Female</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="inlineRadio3"
+                      >Others</label
+                    >
+                  </div>
+                  <!-- <input
                   type="text"
                   class="form-control"
                   placeholder="Enter gender"
                   value=""
                 /> -->
-              </div>
-              <div class="col-md-12">
-                <label class="labels">I am Excited acout:</label
-                ><input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter here"
-                  value=""
-                />
-              </div>
-              <div class="col-md-12">
-                <label class="labels">During my free time I like to do:</label
-                ><input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter here"
-                  value=""
-                />
-              </div>
-              <div class="col-md-12">
-                <label class="labels">My favourit book is:</label
-                ><input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter here"
-                  value=""
-                />
-              </div>
-              <div class="col-md-12">
-                <label class="labels">My favourit foods are:</label
-                ><input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter here"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <!-- Buttons-->
-
-          <div class="container">
-            <div class="row">
-              <div
-                class="col-6 d-flex align-items-center justify-content-start"
-              ><a href="student_portal">
-                <button class="btn btn-primary profile-button" type="button">
-                  Go Back
-                </button></a>
-              </div>
-              <div class="col-6 d-flex align-items-center justify-content-end">
-                <a href="student_portal">
-                <button class="btn btn-primary profile-button" type="button">
-                  Save Profile
-                </button></a>
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">I am Excited acout:</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter here"
+                    value=""
+                    name="excited"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">During my free time I like to do:</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter here"
+                    value=""
+                    name="time"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">My favourit book is:</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter here"
+                    value=""
+                    name="book"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">My favourit foods are:</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter here"
+                    value=""
+                    name="food"
+                  />
+                </div>
               </div>
             </div>
+            <!-- Buttons-->
+            <div class="container">
+              <div class="row">
+                <div
+                  class="col-6 d-flex align-items-center justify-content-start"
+                >
+                  <a href="student_portal">
+                    <button
+                      class="btn btn-primary profile-button"
+                      type="button"
+                    >
+                      Go Back
+                    </button></a
+                  >
+                </div>
+                <div
+                  class="col-6 d-flex align-items-center justify-content-end"
+                >
+                  <a href="student_portal">
+                    <button
+                      class="btn btn-primary profile-button"
+                      type="submit"
+                    >
+                      Save Profile
+                    </button></a
+                  >
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+            <!-- Buttons ends-->
           </div>
-          <br />
-          <br />
-          <!-- Buttons ends-->
         </div>
       </div>
-    </div>
+    </form>
   </body>
 </html>

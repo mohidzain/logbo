@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db import IntegrityError
-from .models import student_group, teacher_group, judge_group, mentor_group, admin_group
+from .models import student_group, teacher_group, judge_group, mentor_group, admin_group, Student
 # Create your views here.
 
 # ===============FOR STUDENTS===============
@@ -41,10 +41,30 @@ def student_signup(request):
 
 @login_required(login_url='/')
 def student_portal(request):
+    if 'first_login' not in request.session:
+        request.session['first_login'] = True
+        # Additional logic for first-time login
+    else:
+        request.session['first_login'] = False
+        # Additional logic for subsequent logins
     return render(request, 'student_portal.html')
 
 @login_required(login_url='/')
 def student_profile(request):
+    if request.method=='POST':
+        try:
+            f_name=request.POST.get('f_name')
+            l_name=request.POST.get('l_name')
+            excited=request.POST.get('excited')
+            time=request.POST.get('time')
+            book=request.POST.get('book')
+            food=request.POST.get('food')
+            student=Student(f_name=f_name,l_name=l_name,excited=excited,time=time,book=book,food=food)
+            student.save()
+            messages.success(request, 'Profile Saved!')
+            return redirect('student_portal')
+        except IntegrityError as e:
+            messages.error(request, 'Username already taken!')
     return render(request, 'student_profile.html')
 
 @login_required(login_url='/')
@@ -101,10 +121,6 @@ def teacher_signup(request):
 @login_required(login_url='/')
 def teacher_profile(request):
     return render(request, 'teacher_profile.html')
-
-# @login_required(login_url='/')
-# def landing(request):
-#     return HttpResponse('Student')
 
 # ===============FOR JUDGES===============
 def judge_signin(request):
@@ -198,7 +214,6 @@ def admin_signup(request):
         except IntegrityError as e:
             messages.error(request, 'Username already taken!')
     return render(request, 'admin_signup.html')
-
 
 # ===============LOGOUT===============
 def logout_view(request):
