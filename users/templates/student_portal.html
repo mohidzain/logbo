@@ -27,12 +27,14 @@
       <div class="container-fluid-nav text-center">
         <h3>Student Portal</h3>
       </div>
-      <button type="button" class="btn btn-light rounded-5"><a class="text-dark" href="logout">Logout</a></button>
+      <button type="button" class="btn btn-light rounded-5">
+        <a class="text-dark" href="logout">Logout</a>
+      </button>
     </nav>
     <!-------------- navigatio bar ends----------------->
     <!-------------- student portion options--------- -->
     <section class="cardsection">
-      <!------------------ option 1-------------------- -->
+      <!------------------ logbook option 1-------------------- -->
       <a href="">
         <div class="card">
           <div>
@@ -43,9 +45,15 @@
               alt="..."
             />
           </div>
-          <!-- </div> -->
           <br />
           <!--  logbook box -->
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item active" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
           <div class="btn-group">
             <button
               type="button"
@@ -56,13 +64,13 @@
               Logbook
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Create logbook</a></li>
-              <li><a class="dropdown-item" href="#">Edit logbook</a></li>
+              <li><a class="dropdown-item" href="#">Create Logbook</a></li>
+              <li><a class="dropdown-item" href="#">Edit Logbook</a></li>
             </ul>
           </div>
         </div>
       </a>
-      <!------------------ option 2--------------------- -->
+      <!------------------ presentation option 2--------------------- -->
       <a href="">
         <div class="card">
           <div>
@@ -75,23 +83,30 @@
           </div>
           <br />
           <!-- presentation box -->
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item active" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
           <div class="btn-group">
             <button
-              type="button"
               class="btn btn-outline-sucess dropdown-toggle"
+              type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Presentation
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Upload video</a></li>
-              <li><a class="dropdown-item" href="#">Upload presentation</a></li>
+              <li><a class="dropdown-item" href="#">Upload Video</a></li>
+              <li><a class="dropdown-item" href="#">Upload Presentation</a></li>
             </ul>
           </div>
         </div>
       </a>
-      <!------------------ option 3--------------------- -->
+      <!------------------ Tools option 3--------------------- -->
       <a href="">
         <div class="card">
           <div>
@@ -102,9 +117,15 @@
               alt="..."
             />
           </div>
-          <!-- </div> -->
           <br />
           <!-- Tools box -->
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item active" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
           <div class="btn-group">
             <button
               type="button"
@@ -121,7 +142,7 @@
           </div>
         </div>
       </a>
-      <!------------------ option 4-------------------- -->
+      <!------------------ Profile option 4-------------------- -->
       <a href="{% url 'student_profile' %}">
         <div class="card">
           <div>
@@ -132,7 +153,6 @@
               alt="..."
             />
           </div>
-          <!-- </div> -->
           <br />
           <!--  Profile -->
           <div class="btn-group">

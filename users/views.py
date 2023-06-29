@@ -47,6 +47,25 @@ def student_portal(request):
 def student_profile(request):
     return render(request, 'student_profile.html')
 
+@login_required(login_url='/')
+def profile_edit(request):
+    if request.method=='POST':
+        try:
+            username=request.POST.get('username')
+            email=request.POST.get('email')
+            password1=request.POST.get('password1')
+            password2=request.POST.get('password2')
+            if password1!=password2:
+                messages.error(request, 'Passwords do not match')
+            else:
+                my_user=User.objects.create_user(username, email, password1)
+                my_user.save()
+                my_user.groups.add(student_group)
+            return redirect('student_signin')
+        except IntegrityError as e:
+            messages.error(request, 'Username already taken!')
+    return render(request, 'student_profile.html')
+
 # ===============FOR TEACHERS===============
 def teacher_signin(request):
     if request.method=='POST':
@@ -73,7 +92,7 @@ def teacher_signup(request):
             else:
                 my_user=User.objects.create_user(username, email, password1)
                 my_user.save()
-                my_user.groups.add(student_group)
+                my_user.groups.add(teacher_group)
             return redirect('teacher_signin')
         except IntegrityError as e:
             messages.error(request, 'Username already taken!')
@@ -112,7 +131,7 @@ def judge_signup(request):
             else:
                 my_user=User.objects.create_user(username, email, password1)
                 my_user.save()
-                my_user.groups.add(student_group)
+                my_user.groups.add(judge_group)
             return redirect('judge_signin')
         except IntegrityError as e:
             messages.error(request, 'Username already taken!')
@@ -143,7 +162,7 @@ def mentor_signup(request):
             else:
                 my_user=User.objects.create_user(username, email, password1)
                 my_user.save()
-                my_user.groups.add(student_group)
+                my_user.groups.add(mentor_group)
             return redirect('mentor_signin')
         except IntegrityError as e:
             messages.error(request, 'Username already taken!')
@@ -174,7 +193,7 @@ def admin_signup(request):
             else:
                 my_user=User.objects.create_user(username, email, password1)
                 my_user.save()
-                my_user.groups.add(student_group)
+                my_user.groups.add(admin_group)
             return redirect('admin_signin')
         except IntegrityError as e:
             messages.error(request, 'Username already taken!')
@@ -185,3 +204,5 @@ def admin_signup(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+ 
