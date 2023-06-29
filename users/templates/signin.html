@@ -11,6 +11,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://kit.fontawesome.com/9ed210544e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>{% block title %}Default Title{% endblock %}</title>
   </head>
@@ -45,5 +46,6 @@ class="container d-flex justify-content-center align-items-center min-vh-100"
         <br />
         <p>
     {% block content %} {% endblock %}
+    <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

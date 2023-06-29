@@ -11,6 +11,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://kit.fontawesome.com/9ed210544e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>{% block title %}Default Title{% endblock %}</title>
   </head>
@@ -47,12 +48,13 @@
                 <p>
     {% block content %}
     {% endblock %}
-    <script>
+    <!-- <script>
       window.addEventListener('load', function() {
           document.getElementsByTagName('input').value = '';
           document.getElementsByTagName('input').value = '';
           // Add more lines to clear additional input fields
       });
-  </script>
+  </script> -->
+      <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

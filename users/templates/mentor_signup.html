@@ -10,6 +10,7 @@
               </p>
             </div>
             <!------------------ ------ loin info-------------------- ------->
+            {% include 'messages.html' %}
             <form method="post">
               {% csrf_token %}
               <div class="input-group mb-3">
@@ -36,12 +37,13 @@
                 <input
                   required
                   type="password"
+                  id="password-field" 
                   minlength="8"
                   pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"
                   class="form-control form-control-gr bg-light fs-6"
                   placeholder="Password"
                   name="password1"
-                />
+                /><i class="fa fa-eye" id="show-password" title="Show password"></i>
               </div>
               <small style="color: red;">must contain a capital and small letter with a number</small>
               <div class="input-group mb-1">
@@ -49,11 +51,11 @@
                   required
                   type="password"
                   minlength="8"
-                  
+                  id="password-field" 
                   class="form-control form-control-gr bg-light fs-6"
                   placeholder="Confirm password"
                   name="password2"
-                />
+                /><i class="fa fa-eye" id="show-password" title="Show password"></i>
               </div>
               <div class="input-group mb-5 d-flex justify-content-between">
                 <div class="form-check">
