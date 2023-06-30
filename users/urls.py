@@ -14,8 +14,12 @@ urlpatterns=[
     path('judge_signup',views.judge_signup, name='judge_signup'),
     path('mentor_signup',views.mentor_signup, name='mentor_signup'),
     path('admin_signup',views.admin_signup, name='admin_signup'),
+    
+    path('step_1',views.step_1, name='step_1'),
+    path('step_2',views.step_2, name='step_2'),
 
     # path('landing',views.landing, name='landing'),
+    
     
     path('student_portal',views.student_portal, name='student_portal'),
     path('student_profile',views.student_profile, name='student_profile'),

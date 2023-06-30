@@ -8,7 +8,12 @@ from django.db import IntegrityError
 from .models import student_group, teacher_group, judge_group, mentor_group, admin_group, Student
 # Create your views here.
 
-# ===============FOR STUDENTS===============
+def step_1(request):
+    return render(request, 'Step1.html')
+def step_2(request):
+    return render(request, 'Step2.html')
+
+# ========================FOR STUDENTS========================
 def student_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -86,7 +91,7 @@ def profile_edit(request):
             messages.error(request, 'Username already taken!')
     return render(request, 'student_profile.html')
 
-# ===============FOR TEACHERS===============
+# ========================FOR TEACHERS========================
 def teacher_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -122,7 +127,7 @@ def teacher_signup(request):
 def teacher_profile(request):
     return render(request, 'teacher_profile.html')
 
-# ===============FOR JUDGES===============
+# ========================FOR JUDGES========================
 def judge_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -153,7 +158,7 @@ def judge_signup(request):
             messages.error(request, 'Username already taken!')
     return render(request, 'judge_signup.html')
 
-# ===============FOR MENTORS===============
+# ========================FOR MENTORS========================
 def mentor_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -184,7 +189,7 @@ def mentor_signup(request):
             messages.error(request, 'Username already taken!')
     return render(request, 'mentor_signup.html')
 
-# ===============FOR ADMINS===============
+# ========================FOR ADMINS========================
 def admin_signin(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -215,7 +220,7 @@ def admin_signup(request):
             messages.error(request, 'Username already taken!')
     return render(request, 'admin_signup.html')
 
-# ===============LOGOUT===============
+# ========================LOGOUT========================
 def logout_view(request):
     logout(request)
     return redirect('/')
