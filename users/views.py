@@ -13,6 +13,12 @@ def step_1(request):
 def step_2(request):
     return render(request, 'Step2.html')
 
+def team_portal(request):
+    return render(request, 'team_portal.html')
+
+def view_team(request):
+    return render(request, 'view_team.html')
+
 # ========================FOR STUDENTS========================
 def student_signin(request):
     if request.method=='POST':

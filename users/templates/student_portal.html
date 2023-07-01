@@ -1,27 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>Student portal</title>
-  </head>
-  <body>
+{% extends 'header.html' %} 
+{% block title %}Student Sign In{% endblock %} 
+{% load static %} 
+{% block content %}
     <style>
       .disabled-div {
         opacity: 0.5;
@@ -29,13 +9,10 @@
       }
     </style>
     <!-------------- navigatio bar start---------- -->
-    <nav class="navbars d-flex justify-content-between">
+    <nav class="navbars">
       <div class="container-fluid-nav text-center">
         <h3>Student Portal</h3>
       </div>
-      <button type="button" class="btn btn-light rounded-5">
-        <a class="text-dark" href="logout">Logout</a>
-      </button>
     </nav>
     {% include 'messages.html' %}
     <!-------------- navigatio bar ends----------------->
@@ -321,7 +298,7 @@
         </div>
       </a>
       <!------------------ option 5--------------------- -->
-      <a href="">
+      <a href="{% url 'team_portal' %}">
         <div class="card">
           <div>
             <img
@@ -342,16 +319,4 @@
     </section>
     {% endif %}
     <!------------------ end--------------------- -->
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+    {% endblock %}
