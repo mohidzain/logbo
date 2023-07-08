@@ -20,8 +20,6 @@ urlpatterns=[
     
     path('team_portal',views.team_portal, name='team_portal'),
     path('view_team',views.view_team, name='view_team'),
-
-    # path('landing',views.landing, name='landing'),
     
     path('student_portal',views.student_portal, name='student_portal'),
     path('student_profile',views.student_profile, name='student_profile'),
