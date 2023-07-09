@@ -108,7 +108,6 @@ def student_portal(request):
     #     # Additional logic for subsequent logins
     return render(request, "student_portal.html")
 
-
 @login_required(login_url="/")
 def student_profile(request):
     if request.method == "POST":
@@ -131,25 +130,24 @@ def student_profile(request):
         return redirect("student_portal")
     return render(request, "student_profile.html")
 
-
-@login_required(login_url="/")
-def profile_edit(request):
-    if request.method == "POST":
-        try:
-            username = request.POST.get("username")
-            email = request.POST.get("email")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            if password1 != password2:
-                messages.error(request, "Passwords do not match")
-            else:
-                my_user = User.objects.create_user(username, email, password1)
-                my_user.save()
-                my_user.groups.add(student_group)
-            return redirect("student_signin")
-        except IntegrityError as e:
-            messages.error(request, "Username already taken!")
-    return render(request, "student_profile.html")
+# @login_required(login_url="/")
+# def profile_edit(request):
+#     if request.method == "POST":
+#         try:
+#             username = request.POST.get("username")
+#             email = request.POST.get("email")
+#             password1 = request.POST.get("password1")
+#             password2 = request.POST.get("password2")
+#             if password1 != password2:
+#                 messages.error(request, "Passwords do not match")
+#             else:
+#                 my_user = User.objects.create_user(username, email, password1)
+#                 my_user.save()
+#                 my_user.groups.add(student_group)
+#             return redirect("student_signin")
+#         except IntegrityError as e:
+#             messages.error(request, "Username already taken!")
+#     return render(request, "student_profile.html")
 
 
 # ========================FOR TEACHERS========================

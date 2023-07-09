@@ -9,7 +9,6 @@ judge_group = Group.objects.get(name='Judges')
 mentor_group = Group.objects.get(name='Mentors')
 admin_group = Group.objects.get(name='Admins')
 
-
 class Student(models.Model):
     f_name = models.CharField(max_length=100)
     l_name = models.CharField(max_length=100)
