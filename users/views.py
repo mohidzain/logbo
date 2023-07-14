@@ -16,53 +16,18 @@ from .models import (
 
 # Create your views here.
 
+# ========================FOR PASSWORD RESET========================
+def check_email_exists(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
 
-def step_1(request):
-    return render(request, "step_1.html")
+        user_exists = User.objects.filter(email=email).exists()
 
-
-def step_2(request):
-    return render(request, "step_2.html")
-
-
-def step_3(request):
-    return render(request, "step_3.html")
-
-
-def step_4(request):
-    return render(request, "step_4.html")
-
-
-def step_5(request):
-    return render(request, "step_5.html")
-
-
-def step_6(request):
-    return render(request, "step_6.html")
-
-
-def step_7(request):
-    return render(request, "step_7.html")
-
-
-def step_8(request):
-    return render(request, "step_8.html")
-
-
-def team_portal(request):
-    return render(request, "team_portal.html")
-
-
-def view_team(request):
-    return render(request, "view_team.html")
-
-
-def survey(request):
-    return render(request, "survey.html")
-
-
-def logbook_complete(request):
-    return render(request, "logbook_complete.html")
+        if user_exists:
+            return redirect('reset_password')
+        else:
+            return HttpResponse("Email does not exist!")
+    return render(request, 'check_email_exists.html')
 
 
 # ========================FOR STUDENTS========================
@@ -84,19 +49,22 @@ def student_signup(request):
         try:
             username = request.POST.get("username")
             email = request.POST.get("email")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            if password1 != password2:
-                messages.error(request, "Passwords do not match")
+            user_exists = User.objects.filter(email=email).exists()
+            if user_exists:
+                messages.error(request, "Email is already assosiated with another account")
             else:
-                my_user = User.objects.create_user(username, email, password1)
-                my_user.save()
-                my_user.groups.add(student_group)
-            return redirect("student_signin")
+                password1 = request.POST.get("password1")
+                password2 = request.POST.get("password2")
+                if password1 != password2:
+                    messages.error(request, "Passwords do not match")
+                else:
+                    my_user = User.objects.create_user(username, email, password1)
+                    my_user.save()
+                    my_user.groups.add(student_group)
+                return redirect("student_signin")
         except IntegrityError as e:
             messages.error(request, "Username already taken!")
     return render(request, "student_signup.html")
-
 
 @login_required(login_url="/")
 def student_portal(request):
@@ -130,26 +98,6 @@ def student_profile(request):
         return redirect("student_portal")
     return render(request, "student_profile.html")
 
-# @login_required(login_url="/")
-# def profile_edit(request):
-#     if request.method == "POST":
-#         try:
-#             username = request.POST.get("username")
-#             email = request.POST.get("email")
-#             password1 = request.POST.get("password1")
-#             password2 = request.POST.get("password2")
-#             if password1 != password2:
-#                 messages.error(request, "Passwords do not match")
-#             else:
-#                 my_user = User.objects.create_user(username, email, password1)
-#                 my_user.save()
-#                 my_user.groups.add(student_group)
-#             return redirect("student_signin")
-#         except IntegrityError as e:
-#             messages.error(request, "Username already taken!")
-#     return render(request, "student_profile.html")
-
-
 # ========================FOR TEACHERS========================
 def teacher_signin(request):
     if request.method == "POST":
@@ -170,14 +118,18 @@ def teacher_signup(request):
         try:
             username = request.POST.get("username")
             email = request.POST.get("email")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            if password1 != password2:
-                messages.error(request, "Passwords do not match")
+            user_exists = User.objects.filter(email=email).exists()
+            if user_exists:
+                messages.error(request, "Email is already assosiated with another account")
             else:
-                my_user = User.objects.create_user(username, email, password1)
-                my_user.save()
-                my_user.groups.add(teacher_group)
+                password1 = request.POST.get("password1")
+                password2 = request.POST.get("password2")
+                if password1 != password2:
+                    messages.error(request, "Passwords do not match")
+                else:
+                    my_user = User.objects.create_user(username, email, password1)
+                    my_user.save()
+                    my_user.groups.add(teacher_group)
             return redirect("teacher_signin")
         except IntegrityError as e:
             messages.error(request, "Username already taken!")
@@ -208,14 +160,18 @@ def judge_signup(request):
         try:
             username = request.POST.get("username")
             email = request.POST.get("email")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            if password1 != password2:
-                messages.error(request, "Passwords do not match")
+            user_exists = User.objects.filter(email=email).exists()
+            if user_exists:
+                messages.error(request, "Email is already assosiated with another account")
             else:
-                my_user = User.objects.create_user(username, email, password1)
-                my_user.save()
-                my_user.groups.add(judge_group)
+                password1 = request.POST.get("password1")
+                password2 = request.POST.get("password2")
+                if password1 != password2:
+                    messages.error(request, "Passwords do not match")
+                else:
+                    my_user = User.objects.create_user(username, email, password1)
+                    my_user.save()
+                    my_user.groups.add(judge_group)
             return redirect("judge_signin")
         except IntegrityError as e:
             messages.error(request, "Username already taken!")
@@ -241,14 +197,18 @@ def mentor_signup(request):
         try:
             username = request.POST.get("username")
             email = request.POST.get("email")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            if password1 != password2:
-                messages.error(request, "Passwords do not match")
+            user_exists = User.objects.filter(email=email).exists()
+            if user_exists:
+                messages.error(request, "Email is already assosiated with another account")
             else:
-                my_user = User.objects.create_user(username, email, password1)
-                my_user.save()
-                my_user.groups.add(mentor_group)
+                password1 = request.POST.get("password1")
+                password2 = request.POST.get("password2")
+                if password1 != password2:
+                    messages.error(request, "Passwords do not match")
+                else:
+                    my_user = User.objects.create_user(username, email, password1)
+                    my_user.save()
+                    my_user.groups.add(mentor_group)
             return redirect("mentor_signin")
         except IntegrityError as e:
             messages.error(request, "Username already taken!")
@@ -274,14 +234,18 @@ def admin_signup(request):
         try:
             username = request.POST.get("username")
             email = request.POST.get("email")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            if password1 != password2:
-                messages.error(request, "Passwords do not match")
+            user_exists = User.objects.filter(email=email).exists()
+            if user_exists:
+                messages.error(request, "Email is already assosiated with another account")
             else:
-                my_user = User.objects.create_user(username, email, password1)
-                my_user.save()
-                my_user.groups.add(admin_group)
+                password1 = request.POST.get("password1")
+                password2 = request.POST.get("password2")
+                if password1 != password2:
+                    messages.error(request, "Passwords do not match")
+                else:
+                    my_user = User.objects.create_user(username, email, password1)
+                    my_user.save()
+                    my_user.groups.add(admin_group)
             return redirect("admin_signin")
         except IntegrityError as e:
             messages.error(request, "Username already taken!")
@@ -289,6 +253,58 @@ def admin_signup(request):
 
 
 # ========================LOGOUT========================
+@login_required(login_url="/")
 def logout_view(request):
     logout(request)
     return redirect("/")
+
+
+# ========================STEPS========================
+@login_required(login_url="/")
+def step_1(request):
+    return render(request, "step_1.html")
+
+@login_required(login_url="/")
+def step_2(request):
+    return render(request, "step_2.html")
+
+@login_required(login_url="/")
+def step_3(request):
+    return render(request, "step_3.html")
+
+@login_required(login_url="/")
+def step_4(request):
+    return render(request, "step_4.html")
+
+@login_required(login_url="/")
+def step_5(request):
+    return render(request, "step_5.html")
+
+@login_required(login_url="/")
+def step_6(request):
+    return render(request, "step_6.html")
+
+@login_required(login_url="/")
+def step_7(request):
+    return render(request, "step_7.html")
+
+@login_required(login_url="/")
+def step_8(request):
+    return render(request, "step_8.html")
+
+@login_required(login_url="/")
+def survey(request):
+    return render(request, "survey.html")
+
+@login_required(login_url="/")
+def logbook_complete(request):
+    return render(request, "logbook_complete.html")
+
+# ========================STEPS========================
+@login_required(login_url="/")
+def team_portal(request):
+    return render(request, "team_portal.html")
+
+@login_required(login_url="/")
+def view_team(request):
+    return render(request, "view_team.html")

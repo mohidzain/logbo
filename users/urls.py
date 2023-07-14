@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.urls.resolvers import URLPattern
+from django.contrib.auth import views as auth_views
 
 urlpatterns=[
     path('',views.student_signin, name='student_signin'),
@@ -36,4 +37,34 @@ urlpatterns=[
     path('logbook_complete',views.logbook_complete, name='logbook_complete'),
 
     path('logout',views.logout_view, name='logout'),
+    
+    path("check_email_exists", views.check_email_exists, name="check_email_exists"),
+    path(
+        "reset_password/",
+        auth_views.PasswordResetView.as_view(
+            template_name="../templates/password_reset.html"
+        ),
+        name="reset_password",
+    ),
+    path(
+        "reset_password_sent/",
+        auth_views.PasswordResetDoneView.as_view(
+            template_name="../templates/reset_password_sent.html"
+        ),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name="../templates/password_reset_confirm.html"
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset_password_complete/",
+        auth_views.PasswordResetCompleteView.as_view(
+            template_name="../templates/password_reset_complete.html"
+        ),
+        name="password_reset_complete",
+    ),
 ]
