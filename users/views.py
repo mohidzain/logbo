@@ -12,7 +12,7 @@ from .models import (
     mentor_group,
     admin_group,
     Student,
-    # Profile
+    Profile
 )
 
 # Create your views here.
