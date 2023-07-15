@@ -1,13 +1,7 @@
 {% extends 'header.html' %} 
-{% block title %}Student Sign In{% endblock %} 
+{% block title %}Student Portal{% endblock %} 
 {% load static %} 
 {% block content %}
-    <style>
-      .disabled-div {
-        opacity: 0.5;
-        pointer-events: none;
-      }
-    </style>
     <!-------------- navigatio bar start---------- -->
     <nav class="navbars">
       <div class="container-fluid-nav text-center">
@@ -19,92 +13,101 @@
     <!-------------- student portion options--------- -->
     <section class="cardsection">
       <!------------------ logbook option 1-------------------- -->
-      <a href="">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/logbook.png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div>
-          <br />
-          <!--  logbook box -->
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-outline-sucess dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Logbook
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Create Logbook</a></li>
-              <li><a class="dropdown-item" href="#">Edit Logbook</a></li>
-            </ul>
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/logbook.png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <br />
+        <!--  logbook box -->
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-sucess dropdown-toggle"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Logbook
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="moreOptionsDropdown"
+          >
+            <a class="dropdown-item" href="#">Create Logbook</a>
+            <a class="dropdown-item" href="#">Edit Logbook</a>
           </div>
         </div>
-      </a>
+      </div>
       <!------------------ presentation option 2--------------------- -->
-      <a href="">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/presentation.png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div>
-          <br />
-          <!-- presentation box -->
-          <div class="btn-group">
-            <button
-              class="btn btn-outline-sucess dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Presentation
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Upload Video</a></li>
-              <li><a class="dropdown-item" href="#">Upload Presentation</a></li>
-            </ul>
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/presentation.png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <br />
+        <!-- presentation box -->
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-sucess dropdown-toggle"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Presentation
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="moreOptionsDropdown"
+          >
+            <a class="dropdown-item" href="#">Upload Video</a>
+            <a class="dropdown-item" href="#">Upload Presentation</a>
           </div>
         </div>
-      </a>
+      </div>
       <!------------------ Tools option 3--------------------- -->
-      <a href="">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/tool-box (1).png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div>
-          <br />
-          <!-- Tools box -->
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-outline-sucess dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Tools
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Fishbone</a></li>
-              <li><a class="dropdown-item" href="#">Brainstrome</a></li>
-            </ul>
+      <div class="card">
+        <div>
+          <img
+            src="{% static 'images/tool-box (1).png' %}"
+            class="img-fluid"
+            style="height: 100px"
+            alt="..."
+          />
+        </div>
+        <br />
+        <!-- Tools box -->
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-sucess dropdown-toggle"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Tools
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="moreOptionsDropdown"
+          >
+            <a class="dropdown-item" href="#">Fishbone</a>
+            <a class="dropdown-item" href="#">Brainstrome</a>
           </div>
         </div>
-      </a>
+      </div>
       <!------------------ Profile option 4-------------------- -->
       <a href="{% url 'student_profile' %}">
         <div class="card">

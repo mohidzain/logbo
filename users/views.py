@@ -12,6 +12,7 @@ from .models import (
     mentor_group,
     admin_group,
     Student,
+    Profile
 )
 
 # Create your views here.
@@ -57,6 +58,7 @@ def student_signup(request):
                 password2 = request.POST.get("password2")
                 if password1 != password2:
                     messages.error(request, "Passwords do not match")
+                    return redirect("student_signup")
                 else:
                     my_user = User.objects.create_user(username, email, password1)
                     my_user.save()
@@ -126,6 +128,7 @@ def teacher_signup(request):
                 password2 = request.POST.get("password2")
                 if password1 != password2:
                     messages.error(request, "Passwords do not match")
+                    return redirect("student_signup")
                 else:
                     my_user = User.objects.create_user(username, email, password1)
                     my_user.save()
@@ -168,6 +171,7 @@ def judge_signup(request):
                 password2 = request.POST.get("password2")
                 if password1 != password2:
                     messages.error(request, "Passwords do not match")
+                    return redirect("student_signup")
                 else:
                     my_user = User.objects.create_user(username, email, password1)
                     my_user.save()
@@ -205,6 +209,7 @@ def mentor_signup(request):
                 password2 = request.POST.get("password2")
                 if password1 != password2:
                     messages.error(request, "Passwords do not match")
+                    return redirect("student_signup")
                 else:
                     my_user = User.objects.create_user(username, email, password1)
                     my_user.save()
@@ -242,6 +247,7 @@ def admin_signup(request):
                 password2 = request.POST.get("password2")
                 if password1 != password2:
                     messages.error(request, "Passwords do not match")
+                    return redirect("student_signup")
                 else:
                     my_user = User.objects.create_user(username, email, password1)
                     my_user.save()
@@ -308,3 +314,32 @@ def team_portal(request):
 @login_required(login_url="/")
 def view_team(request):
     return render(request, "view_team.html")
+
+from .forms import UpdateUserForm, UpdateProfileForm
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='users-profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        # profile_form = UpdateProfileForm(instance=request.user.profile)
+    return render(request, 'profile.html', {'user_form': user_form})
+
+# , 'profile_form': profile_form
+
+# from django.urls import reverse_lazy
+# from django.contrib.auth.views import PasswordChangeView
+# from django.contrib.messages.views import SuccessMessageMixin
+
+# class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+#     template_name = 'users/change_password.html'
+#     success_message = "Successfully Changed Your Password"
+#     success_url = reverse_lazy('users-home')

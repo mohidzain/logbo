@@ -1,2 +1,6 @@
-to run this file
+to run this file:
 python manage.py runserver
+
+user:
+ali
+Abcd1234
