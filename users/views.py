@@ -12,7 +12,7 @@ from .models import (
     mentor_group,
     admin_group,
     Student,
-    Profile
+    # Profile
 )
 
 # Create your views here.
@@ -99,6 +99,35 @@ def student_profile(request):
         messages.success(request, "Profile Saved!")
         return redirect("student_portal")
     return render(request, "student_profile.html")
+
+from .forms import UpdateUserForm, UpdateProfileForm
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='users-profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        # profile_form = UpdateProfileForm(instance=request.user.profile)
+    return render(request, 'profile.html', {'user_form': user_form})
+
+# , 'profile_form': profile_form
+
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
+
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'change_password.html'
+    success_message = "Successfully Changed Your Password"
+    success_url = reverse_lazy('profile')
 
 # ========================FOR TEACHERS========================
 def teacher_signin(request):
@@ -315,31 +344,7 @@ def team_portal(request):
 def view_team(request):
     return render(request, "view_team.html")
 
-from .forms import UpdateUserForm, UpdateProfileForm
 
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, instance=request.user)
-        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your profile is updated successfully')
-            return redirect(to='users-profile')
-    else:
-        user_form = UpdateUserForm(instance=request.user)
-        # profile_form = UpdateProfileForm(instance=request.user.profile)
-    return render(request, 'profile.html', {'user_form': user_form})
 
-# , 'profile_form': profile_form
 
-# from django.urls import reverse_lazy
-# from django.contrib.auth.views import PasswordChangeView
-# from django.contrib.messages.views import SuccessMessageMixin
-
-# class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
-#     template_name = 'users/change_password.html'
-#     success_message = "Successfully Changed Your Password"
-#     success_url = reverse_lazy('users-home')

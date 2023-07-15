@@ -11,6 +11,7 @@ mentor_group = Group.objects.get(name='Mentors')
 admin_group = Group.objects.get(name='Admins')
 
 class Student(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
     f_name = models.CharField(max_length=100)
     l_name = models.CharField(max_length=100)
     # gender = models.CharField(max_length=100)
@@ -18,7 +19,16 @@ class Student(models.Model):
     time = models.CharField(max_length=255)
     book = models.CharField(max_length=100)
     food = models.CharField(max_length=100)
-    # publication_date = models.DateField()
+    # avatar = models.ImageField(default='default.png', upload_to='profile_images')
+
+    # resizing images
+    # def save(self, *args, **kwargs):
+    #     super().save()
+    #     img = Image.open(self.avatar.path)
+    #     if img.height > 100 or img.width > 100:
+    #         new_img = (100, 100)
+    #         img.thumbnail(new_img)
+    #         img.save(self.avatar.path)
 
     def __str__(self):
         return self.f_name
@@ -26,9 +36,8 @@ class Student(models.Model):
 # Extending User Model Using a One-To-One Link
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(default='default.png', upload_to='profile_images')
+    avatar = models.ImageField(default='abcd', upload_to='profile_images')
     bio = models.TextField()
-
     # resizing images
     def save(self, *args, **kwargs):
         super().save()
@@ -37,7 +46,6 @@ class Profile(models.Model):
             new_img = (100, 100)
             img.thumbnail(new_img)
             img.save(self.avatar.path)
-
     def __str__(self):
         return self.user.username
     
